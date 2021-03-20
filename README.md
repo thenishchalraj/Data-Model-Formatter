@@ -1,10 +1,10 @@
 ## ToDos:
-- [] Line by line asking if "expose" is needed
-- [] If found some other object value in a key then format that data in other model
-- [] Optimize the script
-- [] Remove backslash in case to protect path traversal
-- [] Use some more security measures according to the script where ever needed
-- [] Check if the new model filename already exists
+- [ ] Line by line asking if "expose" is needed
+- [ ] If found some other object value in a key then format that data in other model
+- [ ] Optimize the script
+- [ ] Remove backslash in case to protect path traversal
+- [ ] Use some more security measures according to the script where ever needed
+- [ ] Check if the new model filename already exists
 
 ## References:
 1. [While loop in Bash](https://www.cyberciti.biz/faq/bash-while-loop/)
