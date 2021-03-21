@@ -19,17 +19,31 @@ while read line
 do
 
 	readarray -d : -t each_line <<<$line #split a string based on the delimiter ':'
+	each_key=${each_line[0]} #key
+	each_value=${each_line[1]//[[:blank:]]/} #value
+
+	echo "@SerializedName(${each_key})" >> $new_file_name
 
 	IFS='"'
-	read -a each_lines_key <<<${each_line[0]}
+	read -a each_lines_key <<<${each_key}
 
 	IFS='_'
-	read -a each_key <<<${each_lines_key[1]}
+	read -a each_key_array <<<${each_lines_key[1]}
 
-	printf m >> $new_file_name
-	for i in ${each_key[@]}; do
-		printf $i >> $new_file_name
+	printf "var m" >> $new_file_name
+	for i in ${each_key_array[@]}; do
+		printf ${i^} >> $new_file_name
 	done
+	printf ": " >> $new_file_name
+
+
+	if [[ $each_value =~ true ]] || [[ $each_value =~ false ]]; then
+		echo "Boolean," >> $new_file_name
+	elif [ $each_value > -1 ]; then
+		echo "Int," >> $new_file_name
+	else echo "String," >> $new_file_name
+	fi
+
 	echo >> $new_file_name
 
 done < $file_name
