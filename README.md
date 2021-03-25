@@ -1,5 +1,5 @@
 ## ToDos:
-- [ ] Line by line asking if "expose" is needed
+- [ ] Argument for "expose" in case of @Expose
 - [ ] If found some other object value in a key then format that data in other model
 - [ ] Optimize the script
 - [ ] Remove backslash in case to protect path traversal

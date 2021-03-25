@@ -9,6 +9,12 @@
 
 file_name=$1
 new_file_name=$2.kt
+expose_value=0
+
+if [[ "$3" == "expose" ]]
+	then
+		expose_value=1
+fi
 
 echo Formatting your file $file_name
 
@@ -23,6 +29,10 @@ do
 	each_value=${each_line[1]//[[:blank:]]/} #value
 
 	echo "@SerializedName(${each_key})" >> $new_file_name
+	if [[ expose_value -eq 1 ]]
+		then
+			echo "@Expose" >> $new_file_name
+	fi
 
 	IFS='"'
 	read -a each_lines_key <<<${each_key}
